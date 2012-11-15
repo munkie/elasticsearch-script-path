@@ -1,69 +1,63 @@
 package org.elasticsearch.script.path;
 
 import org.elasticsearch.common.Nullable;
-import org.elasticsearch.script.AbstractFloatSearchScript;
+import org.elasticsearch.common.logging.ESLogger;
+import org.elasticsearch.common.logging.Loggers;
+import org.elasticsearch.script.AbstractDoubleSearchScript;
 import org.elasticsearch.index.field.data.strings.StringDocFieldData;
-import org.elasticsearch.script.ScriptException;
 
 import java.util.Map;
 
-public class PathScript extends AbstractFloatSearchScript {
+public class PathScript extends AbstractDoubleSearchScript {
 
     protected String path;
+    protected String[] pathNodes;
     protected String field;
 
+    protected ESLogger logger;
+
     public PathScript(@Nullable Map<String,Object> params) {
-        path = ((String) params.get("path"));
+        logger = Loggers.getLogger(getClass());
+
         field = ((String) params.get("field"));
+        path = ((String) params.get("path"));
+        pathNodes = parsePath(path);
     }
 
     @Override
-    public float runAsFloat() {
+    public double runAsDouble() {
         StringDocFieldData doc = doc().field(field);
-
         if (doc.isEmpty()) {
             return 0;
         }
 
-        String[] paths = doc.getValues();
-        Integer minScore = Integer.MAX_VALUE;
-        for (int i = 0; i < paths.length; i++) {
-            minScore = Math.min(comparePaths(paths[i], path), minScore);
+        String[] docPaths = doc.getValues();
+        Integer steps = Integer.MAX_VALUE;
+        for (String docPath : docPaths) {
+            String[] docPathNodes = parsePath(docPath);
+            steps = Math.min(comparePaths(docPathNodes, pathNodes), steps);
         }
-        if (minScore == Integer.MAX_VALUE) {
+        if (steps.equals(Integer.MAX_VALUE)) {
             return 0;
         } else {
-            return 1 / (minScore + 1);
+            return 1 / ((double) steps + 1);
         }
     }
 
-    protected Integer[] parsePath(String path) throws ScriptException {
-        String[] split = path.split(".");
-        Integer[] results = new Integer[split.length];
-        for (int i = 0; i < split.length; i++) {
-            try {
-                results[i] = Integer.parseInt(split[i]);
-            } catch (NumberFormatException e) {
-                String msg = String.format("Non integer value in path: %s at position %d", path, i);
-                throw new ScriptException(msg, e);
-            }
-        }
-        return results;
+    protected String[] parsePath(String path) {
+        return path.split("\\.");
     }
 
-    protected Integer comparePaths(String pathA, String pathB) {
-        Integer[] pathANodes = parsePath(pathA);
-        Integer[] pathBNodes = parsePath(pathB);
-        return comparePaths(pathANodes, pathBNodes);
-    }
-
-    protected Integer comparePaths(Integer[] pathA, Integer[] pathB) {
+    protected Integer comparePaths(String[] pathA, String[] pathB) {
         int minLength = Math.min(pathA.length, pathB.length);
-        for (int i = 0; i < minLength; i++) {
-            if (pathA[i] != pathB[i]) {
-                return pathA.length + pathA.length - 2 * (i + 1);
-            }
+        int i = 0;
+        while (i < minLength && pathB[i].equals(pathA[i])) {
+            ++i;
         }
-        return Integer.MAX_VALUE;
+        if (0 == i) {
+            return Integer.MAX_VALUE;
+        } else {
+            return pathA.length + pathB.length - 2 * i;
+        }
     }
 }
