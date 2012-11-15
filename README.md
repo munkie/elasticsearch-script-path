@@ -6,19 +6,21 @@ Provides native script to calculate score between two paths
 Install
 -------
 
-1. Run:
+1. Run:  
 `bin/plugin -install munkie/elasticsearch-script-path/1.0.0`.
 
 2. Add following line to *elasticsearch.yml* config file:
 `script.native.pathscript.type: org.elasticsearch.script.path.PathScriptFactory`
 
-    -------------------------------------
-    | Path Script   | Elasticsearch     |
-    -------------------------------------
-    | master        | 0.19.11 -> master |
-    -------------------------------------
-    | 1.0.0         | 0.19.11 -> master |
-    -------------------------------------
+<table>
+<thead>
+<tr><th>Path Script</th><th>ElasticSearch</th></tr>
+</thead>
+<tbody>
+<tr><td>master</td><td>0.19.11 -> master</td></tr>
+<tr><td>1.0.0</td><td>0.19.11 -> master</td></tr>
+</tbody>
+</table>
 
 Usage example
 -------------
