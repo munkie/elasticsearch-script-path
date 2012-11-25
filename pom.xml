@@ -7,7 +7,7 @@
     <name>elasticsearch-script-path</name>
     <groupId>org.elasticsearch</groupId>
     <artifactId>elasticsearch-script-path</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 
     <packaging>jar</packaging>
     <description>Path script for ElasticSearch</description>

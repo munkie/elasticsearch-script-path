@@ -5,9 +5,10 @@ import org.elasticsearch.script.ExecutableScript;
 import org.elasticsearch.script.NativeScriptFactory;
 import java.util.Map;
 
-public class PathScriptFactory implements NativeScriptFactory {
+public class PathFilterFactory implements NativeScriptFactory {
 
-    @Override public ExecutableScript newScript(@Nullable Map<String,Object> params) {
-        return new PathScript(params);
+    @Override
+    public ExecutableScript newScript(@Nullable Map<String,Object> params) {
+        return new PathFilter(params);
     }
 }
