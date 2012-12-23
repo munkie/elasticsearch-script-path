@@ -9,7 +9,9 @@ import java.util.Map;
 public class PathQueryFactory implements NativeScriptFactory {
 
     @Override
-    public ExecutableScript newScript(@Nullable Map<String,Object> params) {
-        return new PathQuery(params);
+    public PathQuery newScript(@Nullable Map<String,Object> params) {
+        String field = ((String) params.get("field"));
+        String path = ((String) params.get("path"));
+        return new PathQuery(field, path);
     }
 }

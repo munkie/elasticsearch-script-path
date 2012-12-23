@@ -7,8 +7,8 @@ import java.util.Map;
 
 public class PathQuery extends PathScript {
 
-    public PathQuery(@Nullable Map<String,Object> params) {
-        super(params);
+    public PathQuery(String field, String path) {
+        super(field, path);
     }
 
     @Override

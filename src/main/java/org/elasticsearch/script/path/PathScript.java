@@ -17,11 +17,11 @@ abstract public class PathScript extends AbstractSearchScript {
 
     protected ESLogger logger;
 
-    public PathScript(@Nullable Map<String,Object> params) {
+    public PathScript(String field, String path) {
         logger = Loggers.getLogger(getClass());
 
-        field = ((String) params.get("field"));
-        path = ((String) params.get("path"));
+        this.field = field;
+        this.path = path;
 
         pathNodes = parsePath(path);
     }

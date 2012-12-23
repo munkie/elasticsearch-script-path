@@ -2,7 +2,6 @@ package org.elasticsearch.script.path;
 
 import org.elasticsearch.common.Nullable;
 
-import java.util.ArrayList;
 import java.util.Map;
 
 public class PathFilter extends PathScript {
@@ -10,19 +9,16 @@ public class PathFilter extends PathScript {
     protected Integer minLevel = 0;
     protected Integer maxLevel = Integer.MAX_VALUE;
 
-    public PathFilter(@Nullable Map<String,Object> params) {
-        super(params);
-        setLevels(params);
+    public PathFilter(String field, String path) {
+        super(field, path);
     }
 
-    protected void setLevels(Map<String,Object> params) {
-        if (params.containsKey("minLevel")) {
-            minLevel = Integer.parseInt(params.get("minLevel").toString());
-        }
-        if (params.containsKey("maxLevel")) {
-            maxLevel = Integer.parseInt(params.get("maxLevel").toString());
-        }
-        logger.info(String.format("min: %d, max: %d", minLevel, maxLevel));
+    public void setMinLevel(Integer minLevel) {
+        this.minLevel = minLevel;
+    }
+
+    public void setMaxLevel(Integer maxLevel) {
+        this.maxLevel = maxLevel;
     }
 
     @Override
