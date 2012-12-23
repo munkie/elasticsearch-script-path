@@ -1,27 +1,27 @@
 package org.elasticsearch.script.path;
 
-import org.elasticsearch.common.Nullable;
 import org.elasticsearch.common.logging.ESLogger;
 import org.elasticsearch.common.logging.Loggers;
 import org.elasticsearch.script.AbstractSearchScript;
 import org.elasticsearch.index.field.data.strings.StringDocFieldData;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 abstract public class PathScript extends AbstractSearchScript {
 
     protected String path;
     protected String[] pathNodes;
     protected String field;
+    protected Boolean direct;
 
     protected ESLogger logger;
 
-    public PathScript(String field, String path) {
+    public PathScript(String field, String path, Boolean direct) {
         logger = Loggers.getLogger(getClass());
 
         this.field = field;
         this.path = path;
+        this.direct = direct;
 
         pathNodes = parsePath(path);
     }
@@ -53,6 +53,10 @@ abstract public class PathScript extends AbstractSearchScript {
         }
         if (0 == i) {
             return Integer.MAX_VALUE;
+        } else if (direct && i < minLength) {
+            return Integer.MAX_VALUE;
+        } else if (direct) {
+            return Math.abs(pathA.length - pathB.length);
         } else {
             return pathA.length + pathB.length - 2 * i;
         }

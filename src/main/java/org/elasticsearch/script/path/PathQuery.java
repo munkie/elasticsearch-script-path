@@ -1,14 +1,9 @@
 package org.elasticsearch.script.path;
 
-import org.elasticsearch.common.Nullable;
-
-import java.util.ArrayList;
-import java.util.Map;
-
 public class PathQuery extends PathScript {
 
-    public PathQuery(String field, String path) {
-        super(field, path);
+    public PathQuery(String field, String path, Boolean direct) {
+        super(field, path, direct);
     }
 
     @Override
