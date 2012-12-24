@@ -58,6 +58,7 @@ curl -XGET http://localhost:9200/path/test/_search -d '{
     "match_all": {}
   },
   "filter": {
+    "filter": {
       "script": "pathFilter",
       "lang": "native",
       "params": {
