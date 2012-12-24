@@ -5,19 +5,22 @@ title: ElasticSearch Script Path Plugin
 
 ElasticSearch Script Path
 =========================
-Plugin for quering and filtering materialized paths
+Plugin for querying and filtering materialized paths
 ---------------------------------------------------
 
 ### Instalation
 
-1. Run: `bin/plugin -install munkie/elasticsearch-script-path/1.0.2` .
+1. Run:
+{% highlight sh %}
+bin/plugin -install munkie/elasticsearch-script-path/1.0.2
+{% endhighlight %}
 
-2. Add following line to *elasticsearch.yml* config file:
-<blockquote>
+2. Add following lines to *elasticsearch.yml* config file:
+{% highlight yaml %}
 script.native:
     pathFilter.type: org.elasticsearch.script.path.PathFilterFactory
     pathQuery.type: org.elasticsearch.script.path.PathQueryFactory
-</blockquote>
+{% endhighlight %}
 
 ### Downloads
 {% for download in site.categories.downloads %}
