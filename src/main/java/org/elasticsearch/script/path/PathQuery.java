@@ -9,15 +9,15 @@ public class PathQuery extends PathScript {
     @Override
     public Object run() {
 
-        Integer minStep = Integer.MAX_VALUE;
-        for (Integer step : getSteps()) {
-            minStep = Math.min(step, minStep);
+        Integer minSteps = NOT_FOUND;
+        for (Integer steps : getSteps()) {
+            minSteps = Math.min(steps, minSteps);
         }
 
-        if (minStep.equals(Integer.MAX_VALUE)) {
+        if (minSteps.equals(NOT_FOUND)) {
             return 0;
         } else {
-            return 1 / ((double) minStep + 1);
+            return 1 / ((double) minSteps + 1);
         }
     }
 }

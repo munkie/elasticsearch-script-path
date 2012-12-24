@@ -20,8 +20,8 @@ public class PathFilter extends PathScript {
     @Override
     public Object run() {
 
-        for (Integer step : getSteps()) {
-            if (step >= minLevel && step <= maxLevel) {
+        for (Integer steps : getSteps()) {
+            if (!steps.equals(NOT_FOUND) && steps >= minLevel && steps <= maxLevel) {
                 return true;
             }
         }
