@@ -8,14 +8,17 @@ ElasticSearch Script Path
 Plugin for querying and filtering materialized paths
 ---------------------------------------------------
 
-### Instalation
+{% assign current = site.categories.downloads.first %}
+{% assign download = current %}
 
-1. Run:
-{% highlight sh %}
-bin/plugin -install munkie/elasticsearch-script-path/1.0.2
+### Installation
+
+Run:
+{% highlight bash %}
+bin/plugin -url {% include zip.markdown %}
 {% endhighlight %}
 
-2. Add following lines to *elasticsearch.yml* config file:
+Add following lines to _elasticsearch.yml_ config file:
 {% highlight yaml %}
 script.native:
     pathFilter.type: org.elasticsearch.script.path.PathFilterFactory
@@ -23,6 +26,10 @@ script.native:
 {% endhighlight %}
 
 ### Downloads
+
+## Current version: **v{{ download.version }}** ( [zip]({% include zip.markdown %}) / [source]({% include source.markdown %}) )
+
+## All versions:
 {% for download in site.categories.downloads %}
-* {{ download.date | date: "%Y-%m-%d" }} - [v{{ download.version }}](downloads/elasticsearch-script-path-{{ download.version }}.zip)
+* {{ download.date | date_to_string }} - **v{{ download.version }}** ( [zip]({% include zip.markdown %}) / [source]({% include source.markdown %}) )
 {% endfor %}

@@ -1,0 +1,1 @@
+{{ site.url }}{{ site.baseurl }}/downloads/{{ site.repo }}-{{ download.version }}.zip

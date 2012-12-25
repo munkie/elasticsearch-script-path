@@ -1,4 +1,9 @@
+url: http://munkie.github.com
 baseurl: /elasticsearch-script-path
+user: munkie
+repo: elasticsearch-script-path
+
+auto: true
 safe: true
 lsi: false
 pygments: true
