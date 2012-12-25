@@ -27,9 +27,9 @@ script.native:
 
 ### Downloads
 
-## Current version: **v{{ download.version }}** ( [zip]({% include zip.markdown %}) / [source]({% include source.markdown %}) )
+#### Current version: **v{{ download.version }}** ( [zip]({% include zip.markdown %}) / [source]({% include source.markdown %}) )
 
-## All versions:
+#### All versions:
 {% for download in site.categories.downloads %}
 * {{ download.date | date_to_string }} - **v{{ download.version }}** ( [zip]({% include zip.markdown %}) / [source]({% include source.markdown %}) )
 {% endfor %}
