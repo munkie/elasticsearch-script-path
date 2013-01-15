@@ -15,7 +15,7 @@ Plugin for querying and filtering materialized paths
 
 Run:
 {% highlight bash %}
-bin/plugin -url {% include zip.markdown %}
+bin/plugin -install {{ site.repo }} -url {% include zip.markdown %}
 {% endhighlight %}
 
 Add following lines to _elasticsearch.yml_ config file:
