@@ -8,7 +8,7 @@ Installation
 ------------
 
 1. Run:  
-`bin/plugin -url http://munkie.github.com/elasticsearch-script-path/downloads/elasticsearch-script-path-1.0.2.zip`.
+`bin/plugin -install elasticsearch-script-path -url http://munkie.github.com/elasticsearch-script-path/downloads/elasticsearch-script-path-1.0.2.zip`.
 
 2. Add following line to *elasticsearch.yml* config file:
 ```
