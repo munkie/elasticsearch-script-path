@@ -2,8 +2,8 @@ package org.elasticsearch.script.path;
 
 import org.elasticsearch.common.logging.ESLogger;
 import org.elasticsearch.common.logging.Loggers;
+import org.elasticsearch.index.fielddata.ScriptDocValues;
 import org.elasticsearch.script.AbstractSearchScript;
-import org.elasticsearch.index.field.data.strings.StringDocFieldData;
 
 import java.util.ArrayList;
 
@@ -29,7 +29,7 @@ abstract public class PathScript extends AbstractSearchScript {
     }
 
     protected ArrayList<Integer> getSteps() {
-        StringDocFieldData doc = doc().field(field);
+        ScriptDocValues.Strings doc = docFieldStrings(field);
 
         ArrayList<Integer> steps = new ArrayList<Integer>();
 

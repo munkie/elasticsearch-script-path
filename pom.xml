@@ -28,7 +28,7 @@
 
 
     <properties>
-        <elasticsearch.version>0.20.1</elasticsearch.version>
+        <elasticsearch.version>0.90.7</elasticsearch.version>
     </properties>
 
     <repositories>
