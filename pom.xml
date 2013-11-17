@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <name>elasticsearch-script-path</name>
-    <groupId>org.elasticsearch</groupId>
+    <groupId>com.github.munkie.elasticsearch</groupId>
     <artifactId>elasticsearch-script-path</artifactId>
     <version>1.0.3</version>
 
