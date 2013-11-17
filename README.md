@@ -25,8 +25,9 @@ Versions
 <tr><th>Path Script</th><th>ElasticSearch</th></tr>
 </thead>
 <tbody>
-<tr><td>master</td><td>0.20.1 -> master</td></tr>
-<tr><td>1.0.2</td><td>0.20.1 -> master</td></tr>
+<tr><td>master</td><td>0.90.7 -> master</td></tr>
+<tr><td>1.0.3</td><td>0.90.7 -> master</td></tr>
+<tr><td>1.0.2</td><td>0.20.1</td></tr>
 <tr><td>1.0.1</td><td>0.19.11</td></tr>
 <tr><td>1.0.0</td><td>0.19.11</td></tr>
 </tbody>
